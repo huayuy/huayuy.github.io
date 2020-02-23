@@ -1,7 +1,7 @@
 CLASSES = {
   0: 'class0',
   1: 'class1',
-  2: 'class2',
+  2: 'class2'
 };
 
 const MODEL_PATH =
@@ -17,21 +17,21 @@ const demo = async () => {
   my_model = await tf.loadLayersModel(MODEL_PATH);
 
   // Warmup the model. This isn't necessary, but makes the first prediction
-  // faster. Call `dispose` to release the WebGL memory allolioned for the return
+  // faster. Call `dispose` to release the WebGL memory allocated for the return
   // value of `predict`.
   my_model.predict(tf.zeros([1, IMAGE_SIZE, IMAGE_SIZE, 3])).dispose();
 
   status('');
 
-  // Make a prediction through the locally hosted lion.jpg.
-  const lionElement = document.getElementById('lion');
-  if (lionElement.complete && lionElement.naturalHeight !== 0) {
-    predict(lionElement);
-    lionElement.style.display = '';
+  // Make a prediction through the locally hosted cat.jpg.
+  const catElement = document.getElementById('cat');
+  if (catElement.complete && catElement.naturalHeight !== 0) {
+    predict(catElement);
+    catElement.style.display = '';
   } else {
-    lionElement.onload = () => {
-      predict(lionElement);
-      lionElement.style.display = '';
+    catElement.onload = () => {
+      predict(catElement);
+      catElement.style.display = '';
     }
   }
 
